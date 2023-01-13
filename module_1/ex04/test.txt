@@ -1,0 +1,3 @@
+Ce fichier est un fichier test
+pour l'exercie 4
+du module 1 : Sed, c'est pour les perdant(e)s !
