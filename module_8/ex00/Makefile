@@ -1,0 +1,30 @@
+NAME = vector
+
+CC = c++
+RM = rm -f
+FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3 #-pedantic
+
+INCLUDES = easyfind.hpp
+
+SRCS = main.cpp
+
+INCS = $(addprefix includes/,${INCLUDES})
+OBJ = $(addprefix srcs/,${SRCS:.cpp=.o})
+
+%.o: %.cpp ${INCS} Makefile
+	${CC} ${FLAGS} -c $< -o $@
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+
+clean:
+	$(RM) $(OBJ)
+
+fclean: clean
+	$(RM) $(NAME)
+
+re: fclean $(NAME)
+
+.PHONY: all clean fclean re
